@@ -1,0 +1,13 @@
+import spacy
+from spacy import displacy
+from spacy import tokenizer
+nlp = spacy.load('en_core_web_sm')
+text =("My name is Raunak Mondal. I am 20 years old. I live in Kolkata. Kolkata is a city located in West Bengal in India.")
+doc = nlp(text)
+sentences = list(doc.sents)
+print(sentences)
+for token in doc:
+	print(token.text)
+ents = [(e.text, e.start_char, e.end_char, e.label_) for e in doc.ents]
+print(ents)
+displacy.render(doc, style='ent', jupyter=True)
